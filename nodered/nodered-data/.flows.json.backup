@@ -1,0 +1,89 @@
+[
+    {
+        "id": "56fee987dce99662",
+        "type": "tab",
+        "label": "Flow Living",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "3394269b08e2caad",
+        "type": "mqtt-broker",
+        "name": "broker",
+        "broker": "mosquitto",
+        "port": "1883",
+        "tls": "",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "f4501291bed844a9",
+        "type": "comment",
+        "z": "56fee987dce99662",
+        "name": "Comentario Flow",
+        "info": "Aca va el texto",
+        "x": 160,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "9c93cc206f0dc5d8",
+        "type": "mqtt in",
+        "z": "56fee987dce99662",
+        "name": "",
+        "topic": "test",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "3394269b08e2caad",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 550,
+        "y": 180,
+        "wires": [
+            [
+                "2c1763139ffbaa27"
+            ]
+        ]
+    },
+    {
+        "id": "2c1763139ffbaa27",
+        "type": "debug",
+        "z": "56fee987dce99662",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 160,
+        "wires": []
+    }
+]

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace.nodered",
+  "data": {
+    "config": {
+      "strategy": {
+        "type": "iframe",
+        "url": "http://nodered:1880/"
+      }
+    }
+  }
+}

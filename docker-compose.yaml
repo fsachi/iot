@@ -1,0 +1,75 @@
+version: "3"
+
+services:
+
+  hass:
+    container_name: homeasisstant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    ports:
+      - "8123:8123"
+    volumes:
+      - ./homeassistant/homeassistant-data/hass-config:/config
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+    privileged: true
+#    network_mode: host
+    networks:
+      - iot-net
+
+
+  hass-configurator:
+    container_name: configurator
+    image: "causticlab/hass-configurator-docker:latest"
+    restart: always
+    ports:
+      - "3218:3218/tcp"
+    volumes:
+      - ./homeassistant/homeassistant-data/configurator-config:/config"
+      - ./homeassistant/homeassistant-data/hass-config:/hass-config
+    networks:
+      - iot-net
+
+
+  broker:
+    build:
+      context: ./mosquitto
+      dockerfile: Dockerfile
+      args:
+        - MOSQUITTO_VERSION=${MOSQUITTO_VERSION:-latest}
+    environment:
+      - MOSQUITTO_USERNAME=${MOSQUITTO_USERNAME}
+      - MOSQUITTO_PASSWORD=${MOSQUITTO_PASSWORD}
+      - TZ=AR
+    image: eclipse-mosquitto:${MOSQUITTO_VERSION:-latest}
+    container_name: mosquitto
+    restart: always
+    volumes:
+      - ./mosquitto/mosquitto-data/data:/mosquitto/data
+      - ./mosquitto/mosquitto-data/log:/mosquitto/log
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+#    command: mosquitto -c /mosquitto-no-auth.conf
+    networks:
+      - iot-net
+
+
+  nodered:
+    image: nodered/node-red
+    container_name: nodered
+    ports:
+      - "1880:1880"
+    volumes:
+      - ./nodered/nodered-data:/data
+    restart: unless-stopped
+    depends_on:
+      - hass
+      - broker
+    environment:
+      - TZ=AR
+    networks:
+      - iot-net
+
+
+networks:
+  iot-net:

@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace_dashboards",
+  "data": {
+    "items": [
+      {
+        "id": "configurator",
+        "url_path": "configurator",
+        "icon": "mdi:wrench",
+        "require_admin": true,
+        "title": "Configurator",
+        "mode": "storage",
+        "show_in_sidebar": true
+      },
+      {
+        "id": "nodered",
+        "url_path": "nodered",
+        "icon": "mdi:shuffle-variant",
+        "require_admin": true,
+        "title": "Node-Red",
+        "mode": "storage",
+        "show_in_sidebar": true
+      }
+    ]
+  }
+}
