@@ -1,1 +1,1 @@
-HomeAssistant (nad Configurator) NodeRed Mosquitto in DockerCompose
+HomeAssistant (and Configurator) NodeRed Mosquitto in DockerCompose
