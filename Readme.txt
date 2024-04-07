@@ -15,3 +15,13 @@ mosquitto_sub -d -h localhost -p 1883 -t "casa/living"
 
 Envio a Topico (en otra consola)
 mosquitto_pub -d -h localhost -p 1883 -t "casa/living" -m "Encender Luz"
+
+
+git init
+git remote set-url origin https://github.com/fsachi/iot.git
+git remote add . https://github.com/fsachi/iot.git
+git add .
+git commit -a
+git commit -am "Initial  Commit"
+git push origin
+
